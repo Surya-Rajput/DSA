@@ -48,6 +48,43 @@ class Solution2:
                 j -= 1
         return []
 
+# Time Complexity : O(nlogn)
+# Space complexity: O(n)
 
+# Hash Map (Two Pass)
+
+class Solution3:
+    def twosum(self, nums: list[int], target: int) -> list[int]:
+        indices = {}
+        for i, n in enumerate(nums):
+            indices[n] = i # {3:0, 4:1, 5:2, 6:3}
+        for i, n in enumerate(nums):
+            diff = target - n
+            if diff in indices and indices[diff] != i:
+                return [i, indices[diff]]
+solution3 = Solution3()
+print(solution3.twosum([3,4,5,6], 7))
+
+
+# Time Complexity O(n)
+# Space Complexity O(n)
+
+
+# Hash Map (one Pass)
+
+class Solution4:
+    def twosum(self, nums: list[int], target: int) -> list[int]:
+        indict = {}
+
+        for i, n in enumerate(nums):
+            diff = target - n 
+            if diff in indict:
+                return [indict[diff], i]
+            indict[n] = i
+solution4 = Solution4()
+print(solution4.twosum([3,4,5,6], 7))
+
+# Time Complexity O(n)
+# Space Complexity O(n)
 
 
